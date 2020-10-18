@@ -18,7 +18,7 @@ Assumptions:
 |Task|Estimated (hrs)|Actual|Notes|
 |:---|--------------:|-----:|:----|
 |Preliminary API Code|05:00:00|00:06:37|So far just barely reworked and committed code.  Done when running in pycharm and venv I suppose also needs rework based on Secrets work.|
-|Local build and run|04:00:00|?||
+|Local build and run|04:00:00|?|1:20:00|
 
 
 
