@@ -8,7 +8,7 @@ Assumptions:
 ## Todo for brownbag:
 
 - [ ] Decide on Pycharm or All Products by 10/25/2020.  All products is $149 / year.  Is this a no-brainer?
-- [ ] Preliminary code based on FastAPI samples [here](https://fastapi.tiangolo.com/tutorial/sql-databases/) or better yet [see code for that](https://github.com/tiangolo/fastapi/tree/master/docs_src/sql_databases).  
+- [ ] Preliminary code based on FastAPI samples [here](https://fastapi.tiangolo.com/tutorial/sql-databases/) or better yet [see code for that](https://github.com/tiangolo/fastapi/tree/master/docs_src/sql_databases).
 - [ ] Secrets.  Should be only one environment variable, "environment" (= "development", "staging", "production", etc.).  The rest is read out of SSM Key Store. We can do this without Helm with a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/).  (Search sample for game-demo.)
 - [ ] Cloudformation stack 
 - [ ] buildspec.yml and appspec.yml
@@ -18,6 +18,8 @@ Assumptions:
 |Task|Estimated (hrs)|Actual|Notes|
 |:---|--------------:|-----:|:----|
 |Preliminary API Code|05:00:00|00:06:37|So far just barely reworked and committed code.  Done when running in pycharm and venv I suppose also needs rework based on Secrets work.|
+|Local build and run|04:00:00|?||
+
 
 
 ## Future / Out of scope for Brownbag / Optional
