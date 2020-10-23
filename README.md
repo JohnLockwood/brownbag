@@ -1,4 +1,8 @@
+
 # A FastAPI REST API on EKS / (Or Lamda?)
+
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/JohnLockwood/brownbag)
+
 
 Assumptions:  
 * Python 3.6 plus.
