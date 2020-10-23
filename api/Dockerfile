@@ -1,3 +1,4 @@
 # TODO Add code for API container
 
-FROM python:3.9-slim
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
+COPY ./src /app
