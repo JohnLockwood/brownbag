@@ -2,8 +2,9 @@ version: "3"
 services:
   api:
     build: 
-      context: ../api
-    
+      context: .
+    ports:
+      - "8000:80"
   postgres:
     image: "postgres:13.0-alpine"
     environment:

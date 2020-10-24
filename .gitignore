@@ -1,3 +1,6 @@
+**/.venv
+**/venv
+app/sql_app.db
 
 # Do not remove this line!
 secret

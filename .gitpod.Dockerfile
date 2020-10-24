@@ -2,7 +2,7 @@ FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
 
 USER johnsin
 
-COPY ./api/src /app
+COPY app /app
 
 # Install custom tools, runtime, etc. using apt-get
 # For example, the command below would install "bastet" - a command line tetris clone:

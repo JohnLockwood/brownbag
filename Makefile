@@ -1,4 +1,4 @@
-.PHONY: build run
+.PHONY: build run debug_make
 
 env := development
 app := api
@@ -7,10 +7,13 @@ POSTGRES_PASSWORD := $(shell aws ssm get-parameter --name /api/development/db/pa
 
 run: build
 	@ # echo Running...
-	echo Using environment $(env)	
-	echo Unsecurely printing password: $(POSTGRES_PASSWORD) 
 	export POSTGRES_PASSWORD
-	docker-compose -f api/docker-compose.yml up
+	docker-compose up
 
 build:
-	@# echo Building...
+	export POSTGRES_PASSWORD
+	docker-compose build
+
+debug_make:
+	echo Using environment $(env)
+	echo Unsecurely printing password: $(POSTGRES_PASSWORD)
