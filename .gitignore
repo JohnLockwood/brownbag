@@ -1,6 +1,6 @@
 **/.venv
 **/venv
-app/sql_app.db
-
+**/sql_app.db
+**/__pycache__
 # Do not remove this line!
 secret
