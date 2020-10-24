@@ -21,7 +21,7 @@ Assumptions:
 |Task|Estimated (hrs)|Actual|Notes|
 |:---|--------------:|-----:|:----|
 |Preliminary API Code|05:00:00|00:06:37|So far just barely reworked and committed code.  Done when running in pycharm and venv I suppose also needs rework based on Secrets work.|
-|Local build and run|04:00:00|2:20:00|Secrets, docker-compose, etc.  In flight.  By about 2:20, docker-compose running postgres, can connect|
+|Local build and run|04:00:00|5:00:00|Secrets, docker-compose, etc.  In flight.  By about 2:20, docker-compose running postgres, can connect|
 
 ## Future / Out of Scope for Brownbag / Optional
 - [ ] Alembic migrations
