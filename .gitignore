@@ -4,3 +4,5 @@
 **/__pycache__
 # Do not remove this line!
 secret
+**/*.db
+.vscode
