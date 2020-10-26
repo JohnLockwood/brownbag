@@ -1,6 +1,5 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-# Needed to force table creation
 from app.model.models import User
 
 from app.model.database import Base
