@@ -17,11 +17,20 @@ def test_connection_good():
 
 
 def test_can_create_user():
+
+    # Delete if exists
+    session = TestingSessionLocal()
+    user = session.query(User).filter(User.id == '42').first()
+    if user:
+        session.delete(user)
+    session.commit()
+
+    # Re-create
+    session = TestingSessionLocal()
     user = User()
     user.id = "42"
     user.email = 'joe@example.com'
     user.hashed_password = "GohashYourself"
     user.is_active = True
-    session = TestingSessionLocal()
     session.add(user)
     session.commit()

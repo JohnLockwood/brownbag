@@ -8,5 +8,11 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/api</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="sql_app" uuid="5d3c90ae-5e77-450a-bb30-94edb78b3d4c">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\CodeS\source\brownbag\sql_app.db</jdbc-url>
+    </data-source>
   </component>
 </project>
