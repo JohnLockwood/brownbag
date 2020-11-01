@@ -1,7 +1,31 @@
-
 # A FastAPI REST API on EKS / (Or Lamda?)
 
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/JohnLockwood/brownbag)
+## Getting Started:
+
+* cp tools/.env.dev_SAMPLE secrets/.env.dev
+* Edit secrets/.env.dev
+* python -m venv .venv
+
+### Building and running
+```
+# If needed, clean:
+docker-compose kill
+docker-comopse rm
+
+# Build and run 
+docker-compose build
+docker-compose up
+
+# If no errors, CTRL-C and then
+docker-compose start
+```
+
+### Unit tests
+* source venv/bin/activate (Mac, Linux) or venv/Scripts/activate (Windows)
+* pip install -r app\requirements.txt
+* pip install -r tests\requirements.txt
+* Create a pytest configuration to run tests directory tests
+* (For now, this needs to be improved):  Add the env variables from secrets/.env.dev to the pytest run configuration in the last step 
 
 Assumptions:  
 * Python 3.6 plus.
