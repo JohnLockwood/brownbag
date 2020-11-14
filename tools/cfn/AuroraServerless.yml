@@ -6,6 +6,9 @@
 # to have a PostgreSQL database instead are: Engine, EngineVersion, MaxCapacity and MinCapacity."
 
 # This was file for RDS database:
+
+# John's notes -- we need to try this with
+
 AWSTemplateFormatVersion: '2010-09-09'
 Description: Provisions Aurora Serverless and related resources for the Simple EC2 Inventory sample solution on AWS
 Parameters:

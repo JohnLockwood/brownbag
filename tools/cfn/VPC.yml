@@ -4,7 +4,12 @@
 Description:  This template deploys a VPC, with a pair of public and private subnets spread
   across two Availability Zones. It deploys an internet gateway, with a default
   route on the public subnets. It deploys a pair of NAT gateways (one in each AZ),
-  and default routes for them in the private subnets.
+  and default routes for them in the private subnets.  NOTE that NAT gateways run 32.94 per month each!
+  This example runs as-is but is expensive!  Also it needs outputs / exports to link it to AuroraServerless.yml.
+
+# RUN USING:
+# ./upsert_stack.sh test-vpcs VPC.yml --parameters ParameterKey=EnvironmentName,ParameterValue=production
+
 
 Parameters:
   EnvironmentName:
