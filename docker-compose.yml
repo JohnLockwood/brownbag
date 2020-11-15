@@ -8,16 +8,16 @@ services:
     env_file:
       - ./secret/.env.dev
   postgres:
-    image: "postgres:13.0-alpine"
+    image: "postgres:11.8-alpine"
     env_file:
       - ./secret/.env.dev
     ports:
       - "5432:5432"
     volumes:
-    - data:/var/lib/postgresql/data 
+    - brownbag_data:/var/lib/postgresql/data
 
 volumes:
-  data:
+  brownbag_data:
 
 
 

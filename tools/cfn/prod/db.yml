@@ -1,13 +1,11 @@
-# Source: https://github.com/aws-samples/aws-aurora-serverless-data-api-sam/blob/master/deploy_scripts/\
+# Source: https://github.com/aws-samples/aws-aurora-serverless-data-api-sam/blob/master/deploy_scripts/
 # Cf.
 # https://aws.amazon.com/blogs/database/using-the-data-api-to-interact-with-an-amazon-aurora-serverless-mysql-database/
 # https://forums.aws.amazon.com/thread.jspa?messageID=917537
+
 # "It uses MySQL but the only attributes you need to change
 # to have a PostgreSQL database instead are: Engine, EngineVersion, MaxCapacity and MinCapacity."
 
-# This was file for RDS database:
-
-# John's notes -- we need to try this with
 
 AWSTemplateFormatVersion: '2010-09-09'
 Description: Provisions Aurora Serverless and related resources for the Simple EC2 Inventory sample solution on AWS
@@ -15,19 +13,19 @@ Parameters:
   AppName:
     Description: "Application Name"
     Type: String
-    Default: ec2-inv
+    Default: brownbag
   EnvType:
     Description: "Environment type (eg, dev, qa, prod)"
     Type: String
-    Default: dev
+    Default: prod
   DBClusterName:
     Description: "Aurora RDS cluster name"
     Type: String
-    Default: ec2-inv-rds-cluster
+    Default: brownbag-prod-cluster
   DatabaseName:
     Description: "Aurora RDS database name"
     Type: String
-    Default: ec2_inventory_db
+    Default: brownbag_prod
   DBMasterUserName:
     AllowedPattern: "[a-zA-Z0-9_]+"
     ConstraintDescription: must be between 1 to 16 alphanumeric characters.
@@ -36,19 +34,17 @@ Parameters:
     MinLength: '1'
     Type: String
     Default: admin_user
-  DBSubnetList:
-    Description: "List of subnets for the Aurora RDS cluster"
-    Type: List<AWS::EC2::Subnet::Id>
-    ConstraintDescription: "must be a list of at least three existing subnets associated with at least three different availability zones."
+
 Resources:
+  VPCStack:
+    Type: AWS::Cloudformation::Stack
+    TemplateURL: s3://brownbag-api-deployment/cloudformation/prod/vpc.yml
+
   DBSubnetGroup:
     Type: AWS::RDS::DBSubnetGroup
     Properties:
       DBSubnetGroupDescription: CloudFormation managed DB subnet group.
-      SubnetIds:
-        - !Select [0, !Ref DBSubnetList ]
-        - !Select [1, !Ref DBSubnetList ]
-        - !Select [2, !Ref DBSubnetList ]
+      SubnetIds: !Ref VPCStack.PrivateSubnets
   DBSecret:
     Type: AWS::SecretsManager::Secret
     Properties:
@@ -70,9 +66,9 @@ Resources:
       MasterUsername: !Join ['', ['{{resolve:secretsmanager:', !Ref DBSecret, ':SecretString:username}}' ]]
       MasterUserPassword: !Join ['', ['{{resolve:secretsmanager:', !Ref DBSecret, ':SecretString:password}}' ]]
       DatabaseName: !Ref DatabaseName
-      Engine: aurora
+      Engine: aurora-postgresql
       EngineMode: serverless
-      EngineVersion: 5.6.10a
+      EngineVersion: 11.8
       ScalingConfiguration:
         AutoPause: true
         MaxCapacity: 4
