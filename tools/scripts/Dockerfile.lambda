@@ -1,6 +1,6 @@
 # Dockerfile for lambda package build
 FROM amazonlinux:latest
-RUN yum install -y findutils
+# RUN yum install -y findutils
 RUN yum install -y amazon-linux-extras
 RUN yum install -y zip
 RUN amazon-linux-extras enable python3.8
@@ -11,6 +11,10 @@ COPY * app/
 WORKDIR app
 RUN pip install -t . -r ./requirements.txt
 RUN chmod -R 755 .
-RUN zip -r ../myDeploymentPackage.zip .
-ENTRYPOINT ["find", ".", "-name", "*"]
+
+VOLUME /build
+# RUN zip -r /build/deploy_me.zip .
+
+ENTRYPOINT ["zip", "-r", "/build/deploy_me.zip", "."]
+
 
