@@ -11,7 +11,7 @@ VOLUME /build
 COPY requirements.txt app/
 WORKDIR app
 RUN pip install -t . -r ./requirements.txt
-COPY * /
+COPY . ./
 RUN chmod -R 755 .
 ENTRYPOINT ["zip", "-r", "/build/deploy_me.zip", "."]
 

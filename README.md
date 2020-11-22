@@ -2,6 +2,8 @@
 
 ## Getting Started:
 
+* cd &lt;project dir&gt;
+* mkdir secrets
 * cp tools/.env.dev_SAMPLE secrets/.env.dev
 * Edit secrets/.env.dev
 * python -m venv .venv

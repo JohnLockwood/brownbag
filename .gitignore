@@ -7,3 +7,4 @@ secret
 **/*.db
 .vscode
 build/
+.idea
