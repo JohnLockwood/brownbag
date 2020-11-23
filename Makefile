@@ -1,5 +1,7 @@
 .PHONY:  build_lambda
 
+current_dir = $(shell pwd)
+
 build_lambda:
 	rm -rf build || true
 	rm -rf app/build || true
@@ -7,6 +9,6 @@ build_lambda:
 	mkdir app/build
 	mkdir build
 	BUILDKIT=1 docker build app -t lambda-builder:latest -f tools/scripts/Dockerfile.lambda	
-	docker run -v /home/johnlockwood/source/brownbag/app/build:/build lambda-builder
+	docker run -v $(current_dir)/app/build:/build lambda-builder
 	mv app/build/*.zip build
 	rm -rf app/build || true
