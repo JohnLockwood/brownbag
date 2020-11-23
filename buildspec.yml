@@ -4,7 +4,6 @@ phases:
     commands:
       make build_lambda
 artifacts:
-  name: brownbag
   files:
-    - brownbag.zip
-  base-directory:  build
+    - 'build/brownbag.zip'
+  name: brownbag-$(date +%Y-%m-%d-%H%M%S)
