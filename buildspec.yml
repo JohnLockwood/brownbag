@@ -3,3 +3,8 @@ phases:
   build:
     commands:
       make build_lambda
+artifacts:
+  name: brownbag_lambda_zip
+  files:
+    - brownbag.zip
+  base-directory:  build
