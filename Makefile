@@ -3,6 +3,7 @@
 current_dir = $(shell pwd)
 
 build_lambda:
+	aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 137112412989.dkr.ecr.us-east-1.amazonaws.com
 	rm -rf build || true
 	rm -rf app/build || true
 	find app -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete

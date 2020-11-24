@@ -1,6 +1,6 @@
 # Dockerfile for lambda package build
-FROM amazonlinux:latest
-# RUN yum install -y findutils
+# FROM amazonlinux:latest
+FROM 137112412989.dkr.ecr.us-east-1.amazonaws.com/amazonlinux:latest
 RUN yum install -y amazon-linux-extras
 RUN yum install -y zip
 RUN amazon-linux-extras enable python3.8
