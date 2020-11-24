@@ -1,8 +1,4 @@
 version: 0.2
-env:
-  variables:
-    key: FILE_NAME
-    value: brownbag-$(date +%Y-%m-%d-%H%M%S).zip
 phases:
   install:
     runtime-versions:
@@ -15,10 +11,10 @@ phases:
       - cp -a app/. temp/
       - cd temp
       - chmod -R 755 .
-      - zip -r ../build/$FILE_NAME .
+      - zip -r ../build/brownbag-$(CODEBUILD_BUILD_ID).zip .
 artifacts:
   files:
-    - $FILE_NAME
+    - brownbag-$(CODEBUILD_BUILD_ID).zip
   base-directory: build
   discard-paths: yes
 
