@@ -1,5 +1,4 @@
 # Dockerfile for lambda package build
-# FROM amazonlinux:latest
 FROM amazonlinux:latest
 RUN yum install -y amazon-linux-extras
 RUN yum install -y zip
