@@ -9,3 +9,6 @@ artifacts:
   name: brownbag-$(date +%Y-%m-%d-%H%M%S).zip
   base-directory: build
   discard-paths: yes
+environment:
+  type: "LINUX_CONTAINER"
+  image: "aws/codebuild/standard:4.0"
