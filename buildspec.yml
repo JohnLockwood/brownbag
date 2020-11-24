@@ -11,10 +11,10 @@ phases:
       - cp -a app/. temp/
       - cd temp
       - chmod -R 755 .
-      - zip -r ../build/brownbag-$(CODEBUILD_BUILD_ID).zip .
+      - zip -r ../build/brownbag-$CODEBUILD_BUILD_ID.zip .
 artifacts:
   files:
-    - brownbag-$(CODEBUILD_BUILD_ID).zip
+    - brownbag-$CODEBUILD_BUILD_NUMBER.zip
   base-directory: build
   discard-paths: yes
 
