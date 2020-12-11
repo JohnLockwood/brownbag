@@ -1,5 +1,15 @@
 version: "3"
 services:
+  proxy:
+    build:
+      context: proxy
+    ports:
+      - 80:80
+  ui:
+    build:
+      context: ui
+    ports:
+      - 8080:80
   api:
     build: 
       context: api
@@ -7,11 +17,7 @@ services:
       - 8888:80
     env_file:
       - ./secret/.env.dev
-  ui:
-      build:
-        context: ui
-      ports:
-        - 8080:80
+
   postgres:
     image: "postgres:11.8-alpine"
     env_file:
@@ -20,7 +26,6 @@ services:
       - "5432:5432"
     volumes:
     - brownbag_data:/var/lib/postgresql/data
-
 volumes:
   brownbag_data:
 

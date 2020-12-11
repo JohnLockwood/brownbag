@@ -1,6 +1,7 @@
 **/.venv
 **/venv
 **/sql_app.db
+**/.pytest_cache
 **/__pycache__
 # Do not remove this line!
 secret
