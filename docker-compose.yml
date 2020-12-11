@@ -2,11 +2,16 @@ version: "3"
 services:
   api:
     build: 
-      context: .
+      context: api
     ports:
-      - "80:80"
+      - 8888:80
     env_file:
       - ./secret/.env.dev
+  ui:
+      build:
+        context: ui
+      ports:
+        - 8080:80
   postgres:
     image: "postgres:11.8-alpine"
     env_file:
