@@ -7,5 +7,5 @@
 secret
 **/*.db
 .vscode
-build/
+./build/
 .idea

@@ -17,11 +17,17 @@ Resources:
                     packages:
                         yum:
                             docker: []
+                            git: []
+                            httpd:  []  # TODO Temporary
                     services:
                         sysvinit:
                             docker:
                                 enabled: "true"
                                 ensureRunning: "true"
+                            httpd:
+                                enabled: "true"
+                                ensureRunning: "true"
+
                     commands:
                         a1_install_docker: 
                             command:
@@ -34,6 +40,7 @@ Resources:
         Properties:
             ImageId: !Ref LatestAmiId
             InstanceType: !Ref InstanceType
+            IamInstanceProfile: "EC2SSMReadOnly"
             SecurityGroups:
             - !Ref WebSecurityGroup
             - !Ref SSHSecurityGroup
@@ -75,3 +82,13 @@ Resources:
                 FromPort: 80
                 IpProtocol: tcp
                 ToPort: 80
+
+    DNSRecords:
+        Type:  AWS::Route53::RecordSet
+        Properties:
+            Name: "languagelearn.pro"
+            HostedZoneId: "Z02334682U89LH3CFGMR8" # LanguageLearn.pro
+            Type: A
+            ResourceRecords:
+                - !GetAtt EC2Instance.PublicIp
+            TTL: '300'
