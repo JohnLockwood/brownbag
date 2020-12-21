@@ -18,7 +18,7 @@ Resources:
                         yum:
                             docker: []
                             git: []
-                            httpd:  []  # TODO Temporary
+                            jq: []
                     services:
                         sysvinit:
                             docker:
@@ -29,10 +29,16 @@ Resources:
                             command:
                                 'Fn::Join':
                                     - "\n"
-                                    - - echo skipping sudo service docker start
+                                    - - sudo service docker start
                                       - sudo usermod -a -G docker ec2-user
-                                      - sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+                                      - sudo curl -L https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
                                       - sudo chmod +x /usr/local/bin/docker-compose
+                                      - git clone https://github.com/JohnLockwood/brownbag.git
+                                      - cd brownbag
+                                      - mkdir secret
+                                      - aws ssm get-parameter --with-decrypt --name /languagelearn/production/environment --region us-east-1 | jq -r .Parameter.Value > secret/.env
+                                      - docker-compose build
+                                      - docker-compose up
         Properties:
             ImageId: !Ref LatestAmiId
             InstanceType: !Ref InstanceType
