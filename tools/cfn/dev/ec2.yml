@@ -38,7 +38,7 @@ Resources:
                                       - mkdir secret
                                       - aws ssm get-parameter --with-decrypt --name /languagelearn/production/environment --region us-east-1 | jq -r .Parameter.Value > secret/.env
                                       - docker-compose build
-                                      - docker-compose up
+                                      - docker-compose up&
         Properties:
             ImageId: !Ref LatestAmiId
             InstanceType: !Ref InstanceType
