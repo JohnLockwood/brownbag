@@ -51,6 +51,9 @@ Resources:
                                       - sudo mkdir /data/logs
                                       - sudo chown -R ec2-user:docker /data
                                       - docker-compose build
+                                      - docker-compose up& # This arm-waving up and down business probably relates to not having real migrations
+                                      - sleep 10
+                                      - docker-compose down
                                       - docker-compose up > /data/logs/docker-compose.log
         Properties:
             ImageId: !Ref LatestAmiId
