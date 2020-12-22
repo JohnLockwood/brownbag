@@ -10,3 +10,4 @@ secret
 api/build
 .idea
 volume_info.txt
+data/

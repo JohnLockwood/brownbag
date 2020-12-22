@@ -47,9 +47,11 @@ Resources:
                                       - "if [ \"$fs\" = \"/dev/nvme1n1: data\" ]; then sudo mkfs -t xfs /dev/nvme1n1 ; fi;"
                                       - sudo mkdir /data
                                       - sudo mount /dev/nvme1n1 /data
+                                      - sudo mkdir /data/postres
+                                      - sudo mkdir /data/logs
                                       - sudo chown -R ec2-user:docker /data
-                                      # - docker-compose build
-                                      # - docker-compose up&
+                                      - docker-compose build
+                                      - docker-compose up > /data/logs/docker-compose.log
         Properties:
             ImageId: !Ref LatestAmiId
             InstanceType: !Ref InstanceType
