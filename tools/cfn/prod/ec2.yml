@@ -7,7 +7,13 @@ Parameters:
     InstanceType:
         Type: "String"
         Default: "t3.small"
-
+    VolumeId:
+        Type: "String"
+        Default: "null"
+Conditions:
+    CreateVolume: !Equals
+        - !Ref VolumeId
+        - "null"
 Resources:
     EC2Instance:
         Type: AWS::EC2::Instance
@@ -82,21 +88,24 @@ Resources:
         Type: AWS::EC2::VolumeAttachment
         Properties:
             InstanceId: !Ref EC2Instance
-            VolumeId: "vol-04f20e2b13b6f8e90"
+            VolumeId:
+              !If [CreateVolume, !Ref BrownbagEC2Volume, !Ref VolumeId]
             Device: /dev/sdf
-#
-#    BrownbagEC2Volume:
-#        Type:  AWS::EC2::Volume
-#        # DeletionPolicy: Retain
-#        Properties:
-#            Encrypted: true
-#            AvailabilityZone: "us-east-1b"
-#            Size: 40
-#            VolumeType:  "gp3"
-#            Tags:
-#                - Key: Name
-#                  Value:  BrownbagEC2Volume
-#            AutoEnableIO: true
+
+
+    BrownbagEC2Volume:
+        Type:  AWS::EC2::Volume
+        Condition: CreateVolume
+        DeletionPolicy: Retain
+        Properties:
+            Encrypted: true
+            AvailabilityZone: "us-east-1b"
+            Size: 20
+            VolumeType:  "gp3"
+            Tags:
+                - Key: Name
+                  Value:  BrownbagEC2Volume
+            AutoEnableIO: true
     SSHSecurityGroup:
         Type: AWS::EC2::SecurityGroup
         Properties:
