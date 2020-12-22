@@ -29,7 +29,7 @@ services:
       - ./secret/.env
     volumes:
       - type: bind
-        source: /Users/jolockwood/src/learn/brownbag/data/postgres/
+        source: /data/postgres/
         target: /var/lib/postgresql/data
 
 #volumes:
