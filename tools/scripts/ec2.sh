@@ -1,5 +1,5 @@
 stack=brownbag-ec2
-file="dev/ec2.yml"
+file="prod/ec2.yml"
 
 echo deleting stack if it exists:  "${stack}"
 aws cloudformation delete-stack --stack-name "${stack}"
