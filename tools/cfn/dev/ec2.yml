@@ -117,4 +117,4 @@ Resources:
             Type: A
             ResourceRecords:
                 - !GetAtt EC2Instance.PublicIp
-            TTL: '300'
+            TTL: '30'
